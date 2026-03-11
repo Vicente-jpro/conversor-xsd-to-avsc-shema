@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="com.example"
+           xmlns:tns="com.example"
+           elementFormDefault="qualified">
+
+  <!-- Simple enumeration type -->
+  <xs:simpleType name="StatusType">
+    <xs:annotation>
+      <xs:documentation>The status of a customer account</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE"/>
+      <xs:enumeration value="INACTIVE"/>
+      <xs:enumeration value="SUSPENDED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Address complex type -->
+  <xs:complexType name="Address">
+    <xs:annotation>
+      <xs:documentation>Represents a postal address</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="street"  type="xs:string"/>
+      <xs:element name="city"    type="xs:string"/>
+      <xs:element name="state"   type="xs:string" minOccurs="0"/>
+      <xs:element name="zipCode" type="xs:string"/>
+      <xs:element name="country" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Order item complex type -->
+  <xs:complexType name="OrderItem">
+    <xs:sequence>
+      <xs:element name="productId"   type="xs:string"/>
+      <xs:element name="productName" type="xs:string"/>
+      <xs:element name="quantity"    type="xs:int"/>
+      <xs:element name="unitPrice"   type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Customer complex type -->
+  <xs:complexType name="Customer">
+    <xs:annotation>
+      <xs:documentation>Represents a customer</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="customerId"   type="xs:string"/>
+      <xs:element name="firstName"    type="xs:string"/>
+      <xs:element name="lastName"     type="xs:string"/>
+      <xs:element name="email"        type="xs:string"/>
+      <xs:element name="phoneNumber"  type="xs:string"  minOccurs="0"/>
+      <xs:element name="dateOfBirth"  type="xs:date"    minOccurs="0"/>
+      <xs:element name="isActive"     type="xs:boolean"/>
+      <xs:element name="creditLimit"  type="xs:decimal" minOccurs="0"/>
+      <xs:element name="status"       type="tns:StatusType"/>
+      <xs:element name="address"      type="tns:Address"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Order complex type -->
+  <xs:complexType name="Order">
+    <xs:annotation>
+      <xs:documentation>Represents a customer order</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="orderId"    type="xs:string"/>
+      <xs:element name="customerId" type="xs:string"/>
+      <xs:element name="orderDate"  type="xs:dateTime"/>
+      <xs:element name="items"      type="tns:OrderItem" maxOccurs="unbounded"/>
+      <xs:element name="totalPrice" type="xs:double"/>
+      <xs:element name="status"     type="tns:StatusType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Root elements -->
+  <xs:element name="customer" type="tns:Customer"/>
+  <xs:element name="order"    type="tns:Order"/>
+
+</xs:schema>

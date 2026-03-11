@@ -1,0 +1,3 @@
+# Place your .xsd schema files in this directory.
+# The converter will process all .xsd files found here and write
+# the resulting .avsc files to the /output directory.
