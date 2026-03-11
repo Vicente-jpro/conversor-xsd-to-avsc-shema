@@ -1,0 +1,33 @@
+{
+  "name": "conversor-xsd-to-avsc-shema",
+  "version": "1.0.0",
+  "description": "A TypeScript application to convert XSD schema files to Avro (.avsc) schema files",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "convert": "ts-node src/index.ts",
+    "test": "ts-node src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vicente-jpro/conversor-xsd-to-avsc-shema.git"
+  },
+  "keywords": ["xsd", "avro", "avsc", "schema", "converter", "typescript"],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vicente-jpro/conversor-xsd-to-avsc-shema/issues"
+  },
+  "homepage": "https://github.com/Vicente-jpro/conversor-xsd-to-avsc-shema#readme",
+  "dependencies": {
+    "xml2js": "^0.6.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@types/xml2js": "^0.4.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
