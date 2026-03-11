@@ -1,0 +1,1 @@
+# conversor-xsd-to-avsc-shema
